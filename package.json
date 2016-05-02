@@ -1,0 +1,29 @@
+{
+  "name": "api-gen",
+  "description": "API MC generator",
+  "version": "0.0.4",
+  "main": "index.js",
+  "author": {
+    "name": "api-gen",
+    "email": "tsv@serveon.ru"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "preferGlobal": true,
+  "bin": {
+    "cli": "./bin/cli"
+  },
+  "engines": {
+    "node": ">= 0.10.25"
+  },
+  "dependencies": {
+    "colors": "^0.6.2",
+    "commander": "^2.2.0"
+  },
+  "keywords": [],
+  "devDependencies": {
+  }
+}
