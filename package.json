@@ -1,7 +1,7 @@
 {
   "name": "api-gen",
   "description": "API MC generator",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "main": "index.js",
   "author": {
     "name": "api-gen",
@@ -14,7 +14,7 @@
   ],
   "preferGlobal": true,
   "bin": {
-    "cli": "./bin/cli"
+    "cli": "./bin/gen.js"
   },
   "engines": {
     "node": ">= 0.10.25"
@@ -25,5 +25,10 @@
   },
   "keywords": [],
   "devDependencies": {
+  },
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:marks12/api-gen.git"
   }
 }
