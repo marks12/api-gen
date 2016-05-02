@@ -19,7 +19,7 @@ module.exports = {
                     var routeContent = route.toString().replace(/entity/g, dataConfig.entities[i].nameMany.toLocaleLowerCase());
 
                     fs.writeFile(
-                        __dirname + '/../..' + '/routes/' + entity + '.js',
+                        __dirname + '/../../..' + '/routes/' + entity + '.js',
                         routeContent,
                         function (err,data) {
                             if (err) {
@@ -36,7 +36,7 @@ module.exports = {
             routeMaker(route);
 
             fs.writeFile(
-                __dirname + '/../..' + '/routes/routes.js',
+                __dirname + '/../../..' + '/routes/routes.js',
                 routes.toString(),
                 function (err,data) {
                     if (err) {
