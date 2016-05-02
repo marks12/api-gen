@@ -50,7 +50,8 @@
                 }
 
                 if(program.controllers) {
-                    console.log('Generate controllers');
+                    var controllers = require('./controllers.js');
+                    controllers.create(dataConfig);
                 }
 
                 if(program.routes) {

@@ -4,19 +4,18 @@
 
 module.exports = {
     setRoute: function (app) {
+
+        var controller = require('../controllers/entity.js').getController();
+
         app.route('/entity')
-            .get(function(req, res) {
-                res.send('Get a list of entity');
-            })
-            .post(function(req, res) {
-                res.send('Add a entity');
-            })
-            .delete(function(req, res) {
-                res.send('Delete a entity');
-            })
-            .put(function(req, res) {
-                res.send('Update the entity');
-            });
+
+            .get(controller.get)
+
+            .post(controller.post)
+
+            .delete(controller.delete)
+
+            .put(controller.put);
     }
 };
 
