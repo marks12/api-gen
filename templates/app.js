@@ -11,6 +11,10 @@ var routes = require('./routes/routes.js');
 
 routes.setRoutes(app);
 
+app.get('/test', function (req, res) {
+    res.send('Hello World')
+});
+
 app.listen(3001, function () {
     console.log('Example app listening on port 3001!');
 });

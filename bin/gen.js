@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 (function() {
+
     var cli;
     var colors;
     var err;
@@ -18,6 +19,7 @@
 
     program.version(pkg.version)
         .option("-a, --all", "generate models and CRUD controllers")
+        .option("-z, --config", "generate db config in sequalize format")
         .option("-m, --models", "generate models")
         .option("-c, --controllers", "generate controllers")
         .option("-r, --routes", "generate routes")
@@ -28,7 +30,7 @@
     program.on("-help", function() {
         console.log("Examples:");
         console.log("");
-        console.log(" $ " + "gen" + " --all");
+        console.log(" $ " + "gen.js" + " --all");
     });
     program.parse(process.argv);
 
@@ -39,37 +41,74 @@
 
             var dataConfig = data.load(fs);
 
+            var genControllers = function (dataConfig) {
+                console.log('Generate controllers');
+                var controllers = require('./controllers.js');
+                controllers.create(dataConfig);
+            };
+
+            var genRoutes = function (dataConfig) {
+                console.log('Generate routes');
+                var route = require('./routes.js');
+                route.create(dataConfig);
+            };
+
+            var genFolders = function () {
+                console.log('Generate folders');
+                folder.create();
+            };
+
+            var genConfig = function (dataConfig) {
+                console.log('Generate db_config');
+                var db_config = require('./db_config.js');
+                db_config.create(dataConfig);
+            };
+
+            var genModel = function (dataConfig) {
+                console.log('Generate models');
+                var models = require('./models.js');
+                models.create(dataConfig);
+            };
+
             if(dataConfig) {
 
                 if(program.all) {
-                    console.log('start generate All');
+                    genFolders();
+                    genControllers(dataConfig);
+                    genRoutes(dataConfig);
+                    genConfig(dataConfig);
+                    genModel(dataConfig);
                 }
 
                 if(program.models) {
-                    console.log('Generate models');
+                    genModel(dataConfig);
+                }
+
+                if(program.config) {
+                    genConfig(dataConfig);
                 }
 
                 if(program.controllers) {
-                    var controllers = require('./controllers.js');
-                    controllers.create(dataConfig);
+                    genControllers(dataConfig);
                 }
 
                 if(program.routes) {
-
-                    console.log('Generate routes');
-
-                    var route = require('./routes.js');
-                    route.create(dataConfig);
+                    genRoutes(dataConfig)
                 }
 
                 if(program.folders) {
-                    folder.create();
+                    genFolders();
+                }
+
+                if(program.app) {
+                    // TODO need to create default app.js
                 }
 
             } else {
 
                 if(program.addData) {
                     console.log('Generate folders');
+                    console.log('Cant generate any else. data.json file not exists');
                 }
             }
 

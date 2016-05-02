@@ -24,6 +24,7 @@ module.exports = {
         if(!fs.existsSync('api/controllers'))   { createFolder('api/controllers');}
         if(!fs.existsSync('api/models'))        { createFolder('api/models');}
         if(!fs.existsSync('api/routes'))        { createFolder('api/routes');}
+        if(!fs.existsSync('api/config'))        { createFolder('api/config');}
 
     },
     entity: function (entity) {

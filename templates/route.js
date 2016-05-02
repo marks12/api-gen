@@ -7,7 +7,7 @@ module.exports = {
 
         var controller = require('../controllers/entity.js').getController();
 
-        app.route('/entity')
+        app.route('/api/entity')
 
             .get(controller.get)
 

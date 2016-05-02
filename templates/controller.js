@@ -2,11 +2,21 @@
  * entity controllers
  */
 
+var db = require('../models/models.js');
+var Entity = db.sequelize.models.Entity;
+
 module.exports = {
     getController: function () {
 
         var get = function(req, res) {
-            res.send('Get a list of entity');
+
+            Entity.findAll().then(function(items) {
+                res.send({
+                    success: true,
+                    data: items,
+                    pagination: {}
+                });
+            });
         };
 
         var post = function(req, res) {
