@@ -22,14 +22,9 @@ module.exports = {
                     var routeContent = item.toString().replace(/Entity/g, dataConfig.entities[i].nameMany)
                         .replace(/entity/g, dataConfig.entities[i].nameMany.toLocaleLowerCase());
 
-                    fs.writeFile(
+                    fs.writeFileSync(
                         __dirname + '/../../..' + '/api/' + part + 's/' + entity + '.js',
-                        routeContent,
-                        function (err,data) {
-                            if (err) {
-                                return console.log(err);
-                            }
-                        });
+                        routeContent);
                 }
             }
         };
@@ -41,14 +36,9 @@ module.exports = {
 
             if(parts) {
 
-                fs.writeFile(
+                fs.writeFileSync(
                     __dirname + '/../../..' + '/api/' + part + 's/' + part + 's.js',
-                    parts.toString(),
-                    function (err,data) {
-                        if (err) {
-                            return console.log(err);
-                        }
-                    });
+                    parts.toString());
             }
         };
 
