@@ -30,6 +30,7 @@
   "keywords": [],
   "devDependencies": {
   },
+  "readme" : "github.com/marks12/api-gen",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:marks12/api-gen.git"
