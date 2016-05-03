@@ -70,6 +70,12 @@
                 models.create(dataConfig);
             };
 
+            var genApp = function (dataConfig) {
+                console.log('Generate app.js');
+                var application = require('./application.js');
+                application.create(dataConfig);
+            };
+
             if(dataConfig) {
 
                 if(program.all) {
@@ -101,7 +107,7 @@
                 }
 
                 if(program.app) {
-                    // TODO need to create default app.js
+                    genApp(dataConfig);
                 }
 
             } else {

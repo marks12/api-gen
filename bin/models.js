@@ -52,7 +52,7 @@ module.exports = {
                             DATE: true,
                             BIGINT: true,
                             REAL: true,
-                            'DOUBLE PRECISION': true,
+                            'DOUBLE PRECISION': false,
                             FLOAT: true,
                             GEOMETRY: true,
                             GEOGRAPHY: true,
@@ -60,8 +60,21 @@ module.exports = {
                             RANGE: false
                         };
 
+                        // TODO enum fields
+
                         if(!types.hasOwnProperty(fieldType) || !types[fieldType]) {
-                            console.log('unsupported data type', fieldType, 'for field: ',fieldName);
+
+                            switch (fieldType) {
+
+                                case 'ENUM':
+                                    break;
+
+
+                                default:
+                                    console.log('unsupported data type', fieldType, 'for field: ',fieldName);
+                                    break;
+                            }
+
                         } else {
                             fieldsStr += fieldName + ': DataTypes.' + fieldType + ',\n\t\t';
                         }

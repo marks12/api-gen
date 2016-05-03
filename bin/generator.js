@@ -18,9 +18,9 @@ module.exports = {
 
                 for (var i = 0; i < dataConfig.entities.length; i++) {
 
-                    var entity = dataConfig.entities[i].nameMany.toLocaleLowerCase();
+                    var entity = dataConfig.entities[i].nameMany.toLowerCase();
                     var routeContent = item.toString().replace(/Entity/g, dataConfig.entities[i].nameMany)
-                        .replace(/entity/g, dataConfig.entities[i].nameMany.toLocaleLowerCase());
+                        .replace(/entity/g, dataConfig.entities[i].nameMany.toLowerCase());
 
                     fs.writeFileSync(
                         __dirname + '/../../..' + '/api/' + part + 's/' + entity + '.js',
