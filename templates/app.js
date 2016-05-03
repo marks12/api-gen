@@ -9,6 +9,12 @@ var mysql = require('mysql');
 var app = express();
 var routes = require('./routes/routes.js');
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
+
 routes.setRoutes(app);
 
 app.get('/test', function (req, res) {

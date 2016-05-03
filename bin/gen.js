@@ -84,6 +84,7 @@
                     genRoutes(dataConfig);
                     genConfig(dataConfig);
                     genModel(dataConfig);
+                    genApp(dataConfig);
                 }
 
                 if(program.models) {

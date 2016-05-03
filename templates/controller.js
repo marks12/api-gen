@@ -20,22 +20,70 @@ module.exports = {
         };
 
         var post = function(req, res) {
-            res.send('Add new row to entity');
+            Entity.create(req.body).then(function(item){
+                res.send({
+                    success: true,
+                    data: item
+                });
+            });
         };
 
         var put = function(req, res) {
-            res.send('Update entity');
+
+            var row_id = parseInt(req.params.id);
+
+            Entity.update(req.body, {
+                where: {id : row_id}
+            }).then(function() {
+                Entity.findById(row_id).then(function(item) {
+                    res.send({
+                        success: true,
+                        data: item
+                    });
+                });
+            }, function(rejectedPromiseError){
+
+            });
+        };
+
+        var one = function (req, res) {
+
+            var row_id = parseInt(req.params.id);
+
+            Entity.findById(row_id).then(function(item) {
+                res.send({
+                    success: true,
+                    data: item
+                });
+            });
         };
 
         var del = function(req, res) {
-            res.send('Delete row from entity');
+
+            var row_id = parseInt(req.params.id);
+
+            Entity.destroy({
+                where: {id: row_id}
+            }).then(function () {
+                if (arguments['0']) {
+                    res.send({
+                        success: true
+                    });
+                } else {
+                    res.status(404).send({
+                        error: true,
+                        msg: 'entity with id: ' + row_id + ' not found'
+                    });
+                }
+            });
         };
 
         return {
             get: get,
             post: post,
             put: put,
-            delete: del
+            delete: del,
+            one: one
         }
     }
 };

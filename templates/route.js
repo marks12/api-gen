@@ -8,13 +8,12 @@ module.exports = {
         var controller = require('../controllers/entity.js').getController();
 
         app.route('/api/entity')
-
             .get(controller.get)
+            .post(controller.post);
 
-            .post(controller.post)
-
+        app.route('/api/entity/:id')
+            .get(controller.one)
             .delete(controller.delete)
-
             .put(controller.put);
     }
 };

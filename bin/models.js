@@ -67,8 +67,15 @@ module.exports = {
                             switch (fieldType) {
 
                                 case 'ENUM':
-                                    break;
 
+                                    if(dataConfig.entities[i].fields[j].values) {
+                                        var values = dataConfig.entities[i].fields[j].values.join("', '")
+                                        fieldsStr += fieldName + ': DataTypes.ENUM(\'' + values + '\'),\n\t\t';
+                                    } else {
+                                        console.log('values not set for type', fieldType, ', field: ',fieldName);
+                                    }
+
+                                    break;
 
                                 default:
                                     console.log('unsupported data type', fieldType, 'for field: ',fieldName);
